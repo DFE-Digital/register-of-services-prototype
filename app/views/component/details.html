@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+   {{component.name}} - Register of Department for Education Services
+{% endblock %}
+{% block beforeContent %}
+   <a href="/list/components" class="govuk-back-link">Back to list of components</a>
+{% endblock %}
+{% block content %}
+   <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+         <span class="govuk-caption-xl">Component</span>
+         <h1 class="govuk-heading-xl">
+            {{component.name}}
+         </h1>
+
+         <p class="govuk-body-l">
+            {{component.description}}
+         </p>
+
+         <div class="govuk-inset-text">
+  This component and how to integrate it with your service, is documented in the <a href=" {{component.docsLink}}" target="_blank">DfE Architecture manual</a>.
+</div>
+
+
+        
+
+         <div class="top-bar govuk-!-margin-top-5"></div>
+
+         <h2 class="govuk-heading-m">Services using {{component.name}}</h2>
+
+         <ul class="govuk-list panel-list">
+
+            <li>Analyse school performance</li>
+
+            <li><a href="/service/details/1">Apply To Become An Academy</a></li>
+
+            <li>Assessment Service</li>
+
+            <li>Assessment Service - Develop an assessment</li>
+
+            <li>Assessment Service - Manage your school assessments</li>
+
+            <li>Assessment Service - Start an assessment</li>
+
+            <li>Claim additional payments for teaching</li>
+
+            <li>Collect</li>
+
+            <li>Document exchange</li>
+
+            <li>Get Information About Schools</li>
+
+            <li>Get help buying for schools</li>
+
+            <li>Get information about pupils</li>
+
+            <li>Get my Ofsted Inspection Data Summary Report</li>
+
+            <li>Hiring Supply Teachers and Agency Workers</li>
+
+            <li>Key to Success (LAs)</li>
+
+            <li>Key to Success (Schools)</li>
+
+            <li>Multiplication tables check</li>
+
+            <li>National non-domestic rates (NNDR) claims</li>
+
+            <li>Online Collections Service - including Risk Protection Arrangements</li>
+
+            <li>Publish to the course directory</li>
+
+            <li>School Experience</li>
+
+            <li>School to School</li>
+
+            <li>T Level Results and Certification</li>
+
+            <li>Teacher Services - Appropriate Body</li>
+
+            <li>Teacher Services - Employer Access - Agent</li>
+
+            <li>Teacher Services - Employer Access - Schools</li>
+
+            <li>Teacher Services - ITT Provider</li>
+
+            <li>Teaching Vacancies</li>
+
+            <li>Trainee Teacher Portal</li>
+
+            <li>View Your Education Data (VYED)</li>
+
+            <li>das-tool-service</li>
+
+         </ul>
+
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+         <h2 class="govuk-heading-m top-bar">Links and resources</h2>
+         <ul class="govuk-list govuk-list--spaced">
+            <li>
+               <a href="{{component.link}}" role="link" target="_blank">View the service</a>
+            </li>
+            {% for resource in component.resources %}
+               <li>
+                  <a href="{{component.link}}" target="_blank">{{component.text}}</a>
+               </li>
+            {% endfor %}
+         </ul>
+         <h2 class="govuk-heading-m top-bar">User groups</h2>
+         <p>The validated user groups for this service are:</p>
+         <ul class="govuk-list govuk-list--spaced">
+            {% for user in component.users %}
+               <li>
+                  <a href="/user-group/{{user.group | lower | replace(' ','-')}}">{{user.group}}</a>
+               </li>
+            {% endfor %}
+         </ul>
+         <h2 class="govuk-heading-m top-bar">Assessment history</h2>
+         <div class="timeline">
+            <ol>
+               <li  class="passed">
+                  <h2 class="gcweb-heading-m">Discovery</h2>
+                  <p>{{component.discovery.outcome}} discovery assessment {%if component.discovery.date%}on {{component.discovery.date}}{%endif%}</p>
+                     {%if component.discovery.report%}
+                        <p>
+                           <a href="{{component.discovery.report}}" target="_blank">View assessment report</a>{%endif%}
+                        </p>
+                     </li>
+                     <li  class="passed">
+                        <h2 class="gcweb-heading-m">Alpha</h2>
+                        <p>{{component.alpha.outcome}} discovery assessment {%if component.alpha.date%}on {{component.alpha.date}}{%endif%}</p>
+                           {%if component.alpha.report%}
+                              <p>
+                                 <a href="{{component.alpha.report}}" target="_blank">View assessment report</a>{%endif%}
+                              </p>
+                           </li>
+                           <li class="passed">
+                              <h2 class="gcweb-heading-m">Beta</h2>
+                              <p>{{component.beta.outcome}} discovery assessment {%if component.beta.date%}on {{component.beta.date}}{%endif%}</p>
+                                 {%if component.beta.report%}
+                                    <p>
+                                       <a href="{{component.beta.report}}" target="_blank">View assessment report</a>{%endif%}
+                                    </p>
+                                 </li>
+                                 <li  class="selected">
+                                    <h2 class="gcweb-heading-m">Live</h2>
+                                    <p>Service is live</p>
+                                 </li>
+                              </ol>
+                           </div>
+                        </div>
+                     {% endblock %}

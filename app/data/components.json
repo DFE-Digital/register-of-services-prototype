@@ -1,0 +1,25 @@
+[
+    {
+        "id": "dfe-signin",
+        "name": "DfE Sign-in",
+        "description": "DfE Sign-in is the department's identity and access management solution for secure user access to digital services.",
+        "link": "https://services.signin.education.gov.uk/",
+        "docsLink": "https://dfe-digital.github.io/architecture/common-components/#dfe-sign-in",
+        "needs": [
+            {
+                "need": "Service teams who want to provide an authentication process to access DfE services."
+            }
+        ],
+        "users": [
+            {
+                "group": "DfE Service Teams"
+            },
+            {
+                "group": "Schools"
+            },
+            {
+                "group": "Teachers"
+            }
+        ]
+    }
+]

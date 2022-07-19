@@ -1,8 +1,7 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Home – GOV.UK Prototype Kit
+  Register of Department for Education Services
 {% endblock %}
 
 {% block content %}
@@ -10,34 +9,98 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Prototype your service using GOV.UK Prototype Kit
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
-      </p>
+        Register of Department for Education Services
+      </h1>
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
+      <p></p>
 
-      <h2 class="govuk-heading-m">About this page</h2>
+      <div class="panel">
 
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
+        <div class="gc-search">
+          <form method="POST" action="/search">
+            <label for="search" class="govuk-label">
+              <p id="search-hint" class="govuk-heading-m">
+                Search the register of services
+            </p>
+            </label>
 
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
+            <div class="inner-form govuk-!-margin-bottom-3">
+              <div class="input-field second-wrap">
+                <input id="search" name="register-search" type="text" placeholder="Search the register" aria-describedby="search-hint" spellcheck="false" data-ms-editor="true">
+              </div>
+              <div class="input-field third-wrap">
+                <button class="btn-search" type="submit" aria-label="Search the register">
+                  <svg class="gcweb-icon gcweb-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+                  </svg>
 
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
+                </button>
+              </div>
+            </div>
+          </form>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/docs/tutorials-and-examples">Tutorials and templates</a>
-        </li>
-        <li>
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
-        </li>
-      </ul>
+        </div>
+
+      </div>
+
+      <h2 class="govuk-heading-m">
+        Find information about services by:
+      </h2>
+
+      <div class="cards">
+        <ul>
+          <li class="card">
+            <div class="text">
+              <h3 id="service">
+                <a href="/list/service">Service</a>
+              </h3>
+              <p>View and filter the full list of services provided by DfE.</p>
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="text">
+              <h3 id="user">
+                <a href="/list/users">User group</a>
+              </h3>
+              <p>View and filter services by intended user groups.</p>
+            </div>
+          </li>
+           <li class="card">
+            <div class="text">
+              <h3 id="components">
+                <a href="/list/components">Common components</a>
+              </h3>
+              <p>View and filter by common components that the services use.</p>
+            </div>
+          </li>
+          <li class="card">
+            <div class="text">
+              <h3 id="org">
+                 <a href="/list/org">Organisation</a>
+              </h3>
+              <p>View and filter services by strategic groups, directorate and programmes.</p>
+            </div>
+          </li>
+          <li class="card">
+            <div class="text">
+              <h3 id="need">
+                 <a href="/list/need">Needs and patterns</a>
+              </h3>
+              <p>View and filter services by need, for example, Apply for something or Tell us something.</p>
+            </div>
+          </li>
+          <li class="card">
+            <div class="text">
+              <h3 id="outcomes">
+                <a href="/list/outcomes">Outcomes or Objectives</a>
+              </h3>
+              <p>View and filter services by strategic outcomes and objectives.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 

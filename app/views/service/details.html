@@ -1,0 +1,180 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+    {{service.name}} - Register of Department for Education Services
+{% endblock %}
+{% block beforeContent %}
+    <a href="/list/service" class="govuk-back-link">Back to list of services</a>
+{% endblock %}
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+            <span class="govuk-caption-xl">{{service.type}}</span>
+            <h1 class="govuk-heading-xl">
+                {{service.name}}
+            </h1>
+
+            <p class="govuk-body-l">
+                {{service.description}}
+            </p>
+            {{ govukTable({
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Directorate"
+    },
+    {
+      text: "Programme"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: service.directorate
+      },
+      {
+        text: service.programme 
+      }
+    ]
+  ]
+}) }}
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+                    <div class="panel">
+                        <h2 class="govuk-heading-s">Outcome</h2>
+                        <p>{{service.outcome}}</p>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-half">
+                    <div class="panel">
+                        <h2 class="govuk-heading-s">Objective</h2>
+                        <p>{{service.objective}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top-bar govuk-!-margin-top-5"></div>
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+                    <h2 class="govuk-heading-m">Components</h2>
+                    {% if service.components.length !== 0 %}
+                        <p>The following components are used in this service:</p>
+
+                        <ul class="govuk-list panel-list">
+                            {% for component in service.components %}
+                                <li>
+                                    <a href="{{component.link}}">{{component.component}}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                    {% else %}
+                        <p>No known components.</p>
+                    {% endif %}
+                </div>
+                <div class="govuk-grid-column-one-half">
+                     <h2 class="govuk-heading-m">User groups</h2>
+        <p>The validated user groups for this service are:</p>
+        <ul class="govuk-list govuk-list--spaced">
+            {% for user in service.users %}
+                <li>
+                    <a href="/user-group/{{user.group | lower}}">{{user.group}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+                    <h2 class="govuk-heading-m">User needs</h2>
+                    {% if service.needs.length !== 0 %}
+                        <p>The following user needs have been validated with this service:</p>
+
+                        <ul class="govuk-list panel-list">
+                            {% for need in service.needs %}
+                                <li>{{need.need}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <p>No known needs.</p>
+                {% endif %}
+
+                
+            </div>
+        </div>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+        <h2 class="govuk-heading-m top-bar">Links and resources</h2>
+        <ul class="govuk-list govuk-list--spaced">
+            <li>
+                <a href="{{service.link}}" role="link" target="_blank">View the service</a>
+            </li>
+            {% for resource in service.resources %}
+                <li>
+                    <a href="{{resource.link}}" target="_blank">{{resource.text}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+       
+        <h2 class="govuk-heading-m top-bar">Assurance</h2>
+
+       <table class="govuk-table">
+  
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Accessibility compliance</th>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">Partial</strong></td>
+    </tr>
+   <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Key metrics</th>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">No</strong></td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">User satisfaction</th>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">90%</strong></td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Authority to operate</th>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Yes</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+       
+
+        <h2 class="govuk-heading-s govuk-!-margin-top-5">Assessment history</h2>
+        <div class="timeline">
+            <ol>
+                <li  class="passed">
+                    <h2 class="gcweb-heading-s">Discovery</h2>
+                    <p>{{service.discovery.outcome}} discovery assessment {%if service.discovery.date%}on {{service.discovery.date}}{%endif%}</p>
+                        {%if service.discovery.report%}
+                            <p>
+                                <a href="{{service.discovery.report}}" target="_blank">View assessment report</a>{%endif%}
+                            </p>
+                        </li>
+                        <li  class="passed">
+                            <h2 class="gcweb-heading-s">Alpha</h2>
+                            <p>{{service.alpha.outcome}} discovery assessment {%if service.alpha.date%}on {{service.alpha.date}}{%endif%}</p>
+                                {%if service.alpha.report%}
+                                    <p>
+                                        <a href="{{service.alpha.report}}" target="_blank">View assessment report</a>{%endif%}
+                                    </p>
+                                </li>
+                                <li class="passed">
+                                    <h2 class="gcweb-heading-s">Beta</h2>
+                                    <p>{{service.beta.outcome}} discovery assessment {%if service.beta.date%}on {{service.beta.date}}{%endif%}</p>
+                                        {%if service.beta.report%}
+                                            <p>
+                                                <a href="{{service.beta.report}}" target="_blank">View assessment report</a>{%endif%}
+                                            </p>
+                                        </li>
+                                        <li  class="selected">
+                                            <h2 class="gcweb-heading-s">Live</h2>
+                                            <p>Service is live</p>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        {% endblock %}
