@@ -52,7 +52,7 @@ $accent: #f47738;
 }
 
 .govuk-width-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin-left: 15px auto;
     margin-right: 15px auto;
 }
@@ -70,7 +70,7 @@ $accent: #f47738;
 @supports (display: grid) {
     .cards>ul {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
         grid-column-gap: 1.5rem;
         grid-row-gap: 1.5rem;
     }
@@ -795,7 +795,7 @@ $accent: #f47738;
 .data-card {
     display: flex;
     flex-direction: column;
-    max-width: 20.75em;
+    max-width: 30em;
     min-height: 15.75em;
     overflow: hidden;
     text-decoration: none;

@@ -32,13 +32,22 @@
         By component
       </h1>
                             </legend>
-                            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes"><div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="user" name="user" type="checkbox" value="parents" {{ checked("user", "parents") }}>
+                                    <label class="govuk-label govuk-checkboxes__label" for="user">
+Cloud Infrastructure Platform (CIP)</label>
+                                </div>
                                 <div class="govuk-checkboxes__item">
                                     <input class="govuk-checkboxes__input" id="user" name="user" type="checkbox" value="parents" {{ checked("user", "parents") }}>
                                     <label class="govuk-label govuk-checkboxes__label" for="user">DfE Sign-in </label>
                                 </div>
                                 
+ <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="user" name="user" type="checkbox" value="parents" {{ checked("user", "parents") }}>
+                                    <label class="govuk-label govuk-checkboxes__label" for="user">
 
+GOV.UK PaaS</label>
+                                </div>
                             </div>
 
                         </fieldset>
