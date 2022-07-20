@@ -10,7 +10,7 @@
         "directorate": "Schools",
         "programme": "SDD",
         "link": "https://apply-convert-academy.service.gov.uk/",
-        "accessibilityCompliance":"Partial",
+        "accessibilityCompliance":"Partially",
         "reportKeyMetrics":"No",
         "needs": [
             {
@@ -140,7 +140,7 @@
         "directorate": "Schools",
         "programme": "",
         "link": "#",
-        "accessibilityCompliance":"Yes",
+        "accessibilityCompliance":"Full",
         "reportKeyMetrics":"Yes",
         "needs": [],
         "users": [
