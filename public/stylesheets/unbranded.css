@@ -7968,7 +7968,7 @@ x:-moz-any-link {
 }
 
 .govuk-header__logo {
-  width: 50%;
+  width: 65%;
   padding-right: 15px;
   float: left;
   vertical-align: top;
@@ -8595,6 +8595,10 @@ x:-moz-any-link {
   margin-bottom: 0px;
 }
 
+.panel.search {
+  min-height: 100px;
+}
+
 .panel-list > li {
   border: 1px solid #b1b4b6;
   border-radius: 3px;
@@ -8999,4 +9003,23 @@ x:-moz-any-link {
   .floating-btn {
     right: 10px;
   }
+}
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+span,
+div,
+table,
+th,
+td,
+tr,
+button,
+input {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 }

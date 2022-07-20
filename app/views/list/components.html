@@ -63,7 +63,7 @@ GOV.UK PaaS</label>
             {% for component in components %}
 
                 <table class="govuk-table">
-                    <caption class="govuk-table__caption govuk-table__caption--m">{{component.name}}</caption>
+                    <caption class="govuk-table__caption govuk-table__caption--m">{{component.name}}<span class="govuk-body-s"><br/><a href="/component/details/{{component.id}}">View component details</a></span></caption>
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
                             <th scope="col" class="govuk-table__header">Name</th>
