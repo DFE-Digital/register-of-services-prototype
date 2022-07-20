@@ -17,7 +17,6 @@
             <p class="govuk-body-l">
                 {{service.description}}
             </p>
-           
 
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half">
@@ -114,6 +113,53 @@
                 </div>
 
             </div>
+
+            <div class="top-bar govuk-!-margin-top-5"></div>
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <h2 class="govuk-heading-m">Related services and products</h2>
+
+{% if service.id === "1" %}
+
+                    <div class="courses-container">
+                        <div class="course">
+                            <div class="course-preview">
+                                <h6>Directorate</h6>
+                                <h2>Schools</h2>
+                            </div>
+                            <div class="course-info">
+                                <div class="progress-container">
+                                   
+                                </div>
+                                <h6>Programme: SDD</h6>
+                                <h2>Move to a 4 day school week</h2>
+                                <a href="/service/details/3" class="btn">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+   <div class="courses-container">
+                        <div class="course">
+                            <div class="course-preview">
+                                <h6>Directorate</h6>
+                                <h2>Schools</h2>
+                            </div>
+                            <div class="course-info">
+                                <div class="progress-container">
+                                   
+                                </div>
+                                <h6>Programme: SDD</h6>
+                                <h2>Apply to become an Academy</h2>
+                                <a href="/service/details/1" class="btn">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
         </div>
         <div class="govuk-grid-column-one-quarter">
 
@@ -123,15 +169,17 @@
 
                 <tbody class="govuk-table__body">
                     <tr class="govuk-table__row">
-                         <td scope="row"class="govuk-table__cell">Phase</td>
-                        <td scope="row"class="govuk-table__cell"><strong class="govuk-tag {%if service.phase === 'Live'%}govuk-tag--green{%elseif service.phase === 'Beta' %}govuk-tag--orange{%else%}govuk-tag--red{%endif%}">{{service.phase}}</strong></td>
+                        <td scope="row"class="govuk-table__cell">Phase</td>
+                        <td scope="row"class="govuk-table__cell">
+                            <strong class="govuk-tag {%if service.phase === 'Live'%}govuk-tag--green{%elseif service.phase === 'Beta' %}govuk-tag--orange{%else%}govuk-tag--red{%endif%}">{{service.phase}}</strong>
+                        </td>
                     </tr>
-                     <tr class="govuk-table__row">
-                         <td scope="row"class="govuk-table__cell">Directorate</td>
+                    <tr class="govuk-table__row">
+                        <td scope="row"class="govuk-table__cell">Directorate</td>
                         <td scope="row"class="govuk-table__cell">{{service.directorate}}</td>
                     </tr>
-                     <tr class="govuk-table__row">
-                         <td scope="row"class="govuk-table__cell">Programme</td>
+                    <tr class="govuk-table__row">
+                        <td scope="row"class="govuk-table__cell">Programme</td>
                         <td scope="row"class="govuk-table__cell">{{service.programme}}</td>
                     </tr>
                 </tbody>
