@@ -11,6 +11,7 @@
             <span class="govuk-caption-xl">{{service.type}}</span>
             <h1 class="govuk-heading-xl">
                 {{service.name}}
+
             </h1>
 
             <p class="govuk-body-l">
@@ -18,7 +19,9 @@
             </p>
             {{ govukTable({
   firstCellIsHeader: false,
-  head: [
+  head: [  {
+      text: "Phase"
+    },
     {
       text: "Directorate"
     },
@@ -28,6 +31,11 @@
   ],
   rows: [
     [
+    {
+        text: govukTag({
+  text: service.phase
+})
+    },
       {
         text: service.directorate
       },
@@ -43,12 +51,14 @@
                     <div class="panel">
                         <h2 class="govuk-heading-s">Outcome</h2>
                         <p>{{service.outcome}}</p>
+                        <p><a href="/">Other products and services with this outcome</a></p>
                     </div>
                 </div>
                 <div class="govuk-grid-column-one-half">
                     <div class="panel">
                         <h2 class="govuk-heading-s">Objective</h2>
                         <p>{{service.objective}}</p>
+                        <p><a href="/">Other products and services with this objective</a></p>
                     </div>
                 </div>
             </div>
@@ -57,39 +67,24 @@
 
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half">
-                    <h2 class="govuk-heading-m">Components</h2>
-                    {% if service.components.length !== 0 %}
-                        <p>The following components are used in this service:</p>
-
-                        <ul class="govuk-list panel-list">
-                            {% for component in service.components %}
-                                <li>
-                                    <a href="{{component.link}}">{{component.component}}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-
-                    {% else %}
-                        <p>No known components.</p>
-                    {% endif %}
+                    <h2 class="govuk-heading-m">User groups</h2>
+                    <p>The validated user groups for this service are:</p>
+                    <ul class="govuk-list panel-list">
+                        {% for user in service.users %}
+                            <li>
+                                <a href="/user-group/{{user.group | lower}}">{{user.group}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
                 <div class="govuk-grid-column-one-half">
-                     <h2 class="govuk-heading-m">User groups</h2>
-        <p>The validated user groups for this service are:</p>
-        <ul class="govuk-list govuk-list--spaced">
-            {% for user in service.users %}
-                <li>
-                    <a href="/user-group/{{user.group | lower}}">{{user.group}}</a>
-                </li>
-            {% endfor %}
-        </ul>
                     <h2 class="govuk-heading-m">User needs</h2>
                     {% if service.needs.length !== 0 %}
                         <p>The following user needs have been validated with this service:</p>
 
                         <ul class="govuk-list panel-list">
                             {% for need in service.needs %}
-                                <li>{{need.need}}</a>
+                               <li><a href="/user-needs/need/{{need.id}}">{{need.need}}</a>
                             </li>
                         {% endfor %}
                     </ul>
@@ -98,8 +93,48 @@
                     <p>No known needs.</p>
                 {% endif %}
 
-                
             </div>
+        </div>
+
+        <div class="top-bar govuk-!-margin-top-5"></div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+                <h2 class="govuk-heading-m">Components</h2>
+                {% if service.components.length !== 0 %}
+                    <p>The following components are used in this service:</p>
+
+                    <ul class="govuk-list panel-list">
+                        {% for component in service.components %}
+                            <li>
+                                <a href="{{component.link}}">{{component.component}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <p>No known components.</p>
+                {% endif %}
+            </div>
+
+            <div class="govuk-grid-column-one-half">
+                <h2 class="govuk-heading-m">Team</h2>
+                {% if service.team.length !== 0 %}
+                    <p>The team providing this service are:</p>
+
+                    <ul class="govuk-list panel-list">
+                        {% for person in service.team %}
+                            <li>
+                                {{person.name}} - {{person.role}}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+                    <p>No known components.</p>
+                {% endif %}
+            </div>
+
         </div>
     </div>
     <div class="govuk-grid-column-one-quarter">
@@ -114,34 +149,38 @@
                 </li>
             {% endfor %}
         </ul>
-       
+
         <h2 class="govuk-heading-m top-bar">Assurance</h2>
 
-       <table class="govuk-table">
-  
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Accessibility compliance</th>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">Partial</strong></td>
-    </tr>
-   <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Key metrics</th>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">No</strong></td>
-    </tr>
-     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">User satisfaction</th>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">90%</strong></td>
-    </tr>
-     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Authority to operate</th>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Yes</strong></td>
-    </tr>
-  </tbody>
-</table>
+        <table class="govuk-table">
 
-
-
-       
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td scope="row"class="govuk-table__cell"><a href="https://apply-the-service-standard.education.gov.uk/accessibility/laws-and-standards.html#content" target="_blank">Accessibility compliance<a/></td>
+                    <td class="govuk-table__cell">
+                         <strong class="govuk-tag {%if service.accessibilityCompliance === 'Full'%}govuk-tag--green{%elseif service.accessibilityCompliance === 'Partial' %}govuk-tag--yellow{%else%}govuk-tag--red{%endif%}">{{service.accessibilityCompliance}}</strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td scope="row"class="govuk-table__cell"><a href="https://apply-the-service-standard.education.gov.uk/service-standard/10-define-success-publish-performance-data.html" target="_blank">Key metrics</a></td>
+                    <td class="govuk-table__cell">
+                         <strong class="govuk-tag {%if service.reportKeyMetrics === 'Yes'%}govuk-tag--green{%elseif service.reportKeyMetrics === 'Partially' %}govuk-tag--yellow{%else%}govuk-tag--red{%endif%}">{{service.reportKeyMetrics}}</strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td scope="row"class="govuk-table__cell"><a href="https://apply-the-service-standard.education.gov.uk/service-standard/14-operate-a-reliable-service.html" target="_blank">User satisfaction</a></td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--green">90%</strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td scope="row"class="govuk-table__cell">Authority to operate</td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--green">Yes</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <h2 class="govuk-heading-s govuk-!-margin-top-5">Assessment history</h2>
         <div class="timeline">
@@ -156,25 +195,50 @@
                         </li>
                         <li  class="passed">
                             <h2 class="gcweb-heading-s">Alpha</h2>
-                            <p>{{service.alpha.outcome}} discovery assessment {%if service.alpha.date%}on {{service.alpha.date}}{%endif%}</p>
+                            <p>{{service.alpha.outcome}} alpha assessment {%if service.alpha.date%}on {{service.alpha.date}}{%endif%}</p>
                                 {%if service.alpha.report%}
                                     <p>
                                         <a href="{{service.alpha.report}}" target="_blank">View assessment report</a>{%endif%}
                                     </p>
                                 </li>
-                                <li class="passed">
+                                <li class="{%if service.beta.outcome === 'Passed'%}passed{%elseif service.beta.outcome === 'Did not pass'%}failed{%elseif service.phase === 'Beta'%}selected{% else%}default{%endif%}">
                                     <h2 class="gcweb-heading-s">Beta</h2>
-                                    <p>{{service.beta.outcome}} discovery assessment {%if service.beta.date%}on {{service.beta.date}}{%endif%}</p>
+                                    {%if service.beta.outcome === 'Passed' or service.beta.outcome === 'Did not pass'%}
+                                    <p>{{service.beta.outcome}} beta assessment {%if service.beta.date%}on {{service.beta.date}}{%endif%}</p>
                                         {%if service.beta.report%}
                                             <p>
                                                 <a href="{{service.beta.report}}" target="_blank">View assessment report</a>{%endif%}
                                             </p>
+                                            {% endif%}
                                         </li>
-                                        <li  class="selected">
+                                        <li  class="{%if service.phase === 'Live'%}selected{%else%}default{%endif%}">
                                             <h2 class="gcweb-heading-s">Live</h2>
-                                            <p>Service is live</p>
                                         </li>
                                     </ol>
                                 </div>
                             </div>
                         {% endblock %}
+
+                        {% block pageScripts %}
+                            <script>
+                                var cards = document.querySelectorAll('.panel-list');
+                                Array
+                                    .prototype
+                                    .forEach
+                                    .call(cards, function (card) {
+                                        var down = void 0,
+                                            up = void 0,
+                                            link = card.querySelector('li a');
+                                        card.style.cursor = 'pointer';
+                                        card.onmousedown = function () {
+                                            return down = + new Date();
+                                        };
+                                        card.onmouseup = function () {
+                                            up = + new Date();
+                                            if (up - down < 200) {
+                                                link.click();
+                                            }
+                                        };
+                                    });
+                            </script>
+                            {% endblock%}

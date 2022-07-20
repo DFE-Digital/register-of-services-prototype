@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  List of components  - Register of Department for Education Services
+{% endblock %}
+
+{% block beforeContent %}{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">Department for Education</span>
+            <h1 class="govuk-heading-xl">
+      List of services by component
+       </h1>
+
+        </div>
+    </div>
+
+    <div class="govuk-grid-row govuk-!-margin-top-5">
+        <div class="govuk-grid-column-one-quarter">
+            <div class=" filter-panel">
+                <h2 class="govuk-heading-m">Filters</h2>
+
+                <form action="/filter" method="post">
+
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                <h1 class="govuk-fieldset__heading">
+        By component
+      </h1>
+                            </legend>
+                            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="user" name="user" type="checkbox" value="parents" {{ checked("user", "parents") }}>
+                                    <label class="govuk-label govuk-checkboxes__label" for="user">DfE Sign-in </label>
+                                </div>
+                                
+
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <button type="submit" class="govuk-button"  data-module="govuk-button">Filter</button>
+
+                </form>
+            </div>
+        </div>
+        <div class="govuk-grid-column-three-quarters">
+
+            {% for component in components %}
+
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-table__caption--m">{{component.name}}</caption>
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Name</th>
+                            <th scope="col" class="govuk-table__header">Phase</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+
+                        {% for service in component.services %}
+
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">
+                                    <a href="/service/details/{{service.id}}">{{service.name}}</a>
+                                </th>
+                                <td class="govuk-table__cell">
+                                    <strong class="govuk-tag {%if service.phase === 'Live'%}govuk-tag--green{%elseif service.phase === 'Beta' %}govuk-tag--orange{%else%}govuk-tag--red{%endif%}">{{service.phase}}</strong>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

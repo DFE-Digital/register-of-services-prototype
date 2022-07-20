@@ -80,11 +80,40 @@
     }) }}
   {% endblock %}
 {% endif %}
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 {% block bodyEnd %}
   {% block scripts %}
+  	
     {% include "includes/scripts.html" %}
     {% block pageScripts %}{% endblock %}
   {% endblock %}
-  <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
+  
 {% endblock %}
+
+<script>
+    $(".gcweb-collapse-panel--button").click(function () {
+
+        var panelName = $(this).attr('data-header');
+        var state = $(this).attr('data-state');
+
+        if (state === 'show') {
+            $("#" + panelName).removeClass('gcweb-show');
+            $("#" + panelName).addClass('gcweb-hide');
+            $("#" + panelName).attr('aria-expanded', "false");
+            $(this).text("Expand section");
+            $(this).attr('data-state', "hide");
+        }
+        else {
+            $("#" + panelName).removeClass('gcweb-hide');
+            $("#" + panelName).addClass('gcweb-show');
+            $("#" + panelName).attr('aria-expanded', "true");
+            $(this).text("Collapse section");
+            $(this).attr('data-state', "show");
+        }
+
+    });
+
+
+
+
+</script>

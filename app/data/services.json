@@ -10,9 +10,12 @@
         "directorate": "Schools",
         "programme": "SDD",
         "link": "https://apply-convert-academy.service.gov.uk/",
+        "accessibilityCompliance":"Partial",
+        "reportKeyMetrics":"No",
         "needs": [
             {
-                "need": "Schools who want to convert to an academy."
+                "need": "As a school we want to apply to convert to an academy so that we can ...",
+                "id": "1"
             }
         ],
         "users": [
@@ -25,6 +28,11 @@
                 "component": "DfE Sign-In",
                 "link": "/component/details/dfe-signin",
                 "description": "DfE Sign-in is the department's identity and access management solution for secure user access to digital services."
+            },
+            {
+                "component": "Cloud Infrastructure Platform (CIP)",
+                "link": "/component/details/cip",
+                "description": "CIP is a set of principles, processes and technologies that support the development and delivery of cloud computing, applications and services."
             }
         ],
         "resources":[
@@ -32,7 +40,37 @@
                 "link":"https://conversions-design-history.netlify.app/",
                 "text": "Design history"
             }
-        ]
+        ],
+        "team":[
+            {
+                "name":"Luke Slowen",
+                "role":"Head of Architecture"
+            },
+            {
+                "name":"Andy Jones",
+                "role":"Senior Interaction Designer"
+            }
+        ],
+        "discovery": {
+            "outcome": "Passed",
+            "report": "",
+            "date": ""
+        },
+        "alpha": {
+            "outcome": "Passed",
+            "report": "https://www.gov.uk/service-standard-reports/get-into-teaching-alpha-assessment-report",
+            "date": "17 March 2020"
+        },
+        "beta": {
+            "outcome": "Passed",
+            "report": "https://www.gov.uk/service-standard-reports/get-into-teaching-beta-assessment-report",
+            "date": "19 January 2021"
+        },
+        "live": {
+            "outcome": "",
+            "report": "",
+            "date": ""
+        }
     },
     {
         "id": "2",
@@ -45,6 +83,8 @@
         "directorate": "Skills",
         "programme": "",
         "link": "https://getintoteaching.education.gov.uk/",
+        "accessibilityCompliance":"No",
+        "reportKeyMetrics":"Yes",
         "needs": [],
         "users": [
             {
@@ -76,6 +116,83 @@
             {
                 "link":"https://get-into-teaching-design-history.london.cloudapps.digital/",
                 "text": "Design history"
+            }
+        ],
+        "team":[
+            {
+                "name":"Luke Slowen",
+                "role":"Head of Architecture"
+            },
+            {
+                "name":"Andy Jones",
+                "role":"Senior Interaction Designer"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Move to a 4 day school week",
+        "description": "Information and guidance for schools, parents and carers to move to a 4 day school week.",
+        "phase": "Beta",
+        "outcome": "Help schools drive the best value from school funding.",
+        "objective": "Support the school system to maximise value for money.",
+        "type": "Campaign website",
+        "directorate": "Schools",
+        "programme": "",
+        "link": "#",
+        "accessibilityCompliance":"Yes",
+        "reportKeyMetrics":"Yes",
+        "needs": [],
+        "users": [
+            {
+                "group": "Schools"
+            },
+            {
+                "group": "Parents and carers"
+            },
+            {
+                "group": "Acadamies"
+            }
+        ],
+        "components": [{
+            "component": "GOV.UK PaaS",
+            "link": "/component/details/paas",
+            "description": "GOV.UK Platform as a Service (PaaS) is a platform developed by Government Digital Service (GDS) and available for government departments to deploy applications and backend services."
+        }],
+        "discovery": {
+            "outcome": "Passed",
+            "report": "",
+            "date": ""
+        },
+        "alpha": {
+            "outcome": "Passed",
+            "report": "#",
+            "date": "11 July 2022"
+        },
+        "beta": {
+            "outcome": "",
+            "report": "",
+            "date": ""
+        },
+        "live": {
+            "outcome": "",
+            "report": "",
+            "date": ""
+        },
+         "resources":[
+            {
+                "link":"#",
+                "text": "Design history"
+            }
+        ],
+        "team":[
+            {
+                "name":"Luke Slowen",
+                "role":"Head of Architecture"
+            },
+            {
+                "name":"Andy Jones",
+                "role":"Senior Interaction Designer"
             }
         ]
     }

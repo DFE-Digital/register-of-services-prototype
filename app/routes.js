@@ -24,6 +24,45 @@ router.get('/list/service', function (req, res) {
 
 })
 
+router.get('/user-needs/need/:id', function (req, res) {
+
+    var id = req.params.id;
+
+    console.log("Get user need");
+
+    var data = require('./data/needs.json');
+
+    var need = data.filter(function (value) {
+        return (value.id === id);
+    });
+
+    if (need.length !== 1) {
+        return res.redirect("/");
+    }
+    else {
+        need = need[0];
+        return res.render('user-needs/need', {
+            need
+        });
+    }
+
+})
+
+router.get('/list/components', function (req, res) {
+
+    console.log("Get list of components");
+
+    var data = require('./data/components.json');
+
+    var components = data.sort(sort_by('name', false, (a) => a.toUpperCase()
+    ));
+
+    return res.render('list/components', {
+        components
+    });
+
+})
+
 router.get('/service/details/:id', function (req, res) {
 
     var id = req.params.id;

@@ -5169,7 +5169,8 @@ x:-moz-any-link {
   border-bottom: 10px solid #f47738;
 }
 
-.govuk-header__product-name, .govuk-header__logotype-text {
+.govuk-header__product-name,
+.govuk-header__logotype-text {
   line-height: 2.5rem !important;
   font-size: 1.2rem;
 }
@@ -5187,7 +5188,9 @@ x:-moz-any-link {
 }
 
 .govuk-width-container {
-  max-width: 1460px;
+  max-width: 1200px;
+  margin-left: 15px auto;
+  margin-right: 15px auto;
 }
 
 .cards > ul {
@@ -5334,7 +5337,7 @@ x:-moz-any-link {
 
 .gc-search {
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 .gc-search .inner-form {
@@ -5386,7 +5389,8 @@ x:-moz-any-link {
   font-size: 16px;
 }
 
-.gc-search .inner-form .input-field input:focus, .gc-search .inner-form .input-field input:hover {
+.gc-search .inner-form .input-field input:focus,
+.gc-search .inner-form .input-field input:hover {
   box-shadow: 0 0 0 4px #fd0;
 }
 
@@ -5506,25 +5510,27 @@ x:-moz-any-link {
   margin-bottom: 15px;
 }
 
-.gc-search-pagination-left:focus, .gc-search-pagination-left:hover {
+.gc-search-pagination-left:focus,
+.gc-search-pagination-left:hover {
   background: #fd0;
   border-left: 5px solid #0b0c0c;
 }
 
-.gc-search-pagination-right:focus, .gc-search-pagination-right:hover {
+.gc-search-pagination-right:focus,
+.gc-search-pagination-right:hover {
   background: #fd0;
   border-right: 5px solid #0b0c0c;
 }
 
 .gc-search .inner-form .input-field.third-wrap .btn-search {
-  border-radius: 0px 4px 4px 0px;
-  background: #eaeaea;
+  border-radius: 0px 2px 2px 0px;
+  background: #003a69;
 }
 
 .gc-search .inner-form .input-field.third-wrap .btn-search .gcweb-icon__search {
   height: 27px;
   width: 27px;
-  fill: #354973;
+  fill: #ffffff;
   margin-top: 4px;
 }
 
@@ -5570,14 +5576,13 @@ x:-moz-any-link {
   margin-bottom: 10px;
   color: #0b0c0c;
 }
-
-ol {
+.timeline ol {
   list-style-type: none;
   position: relative;
   padding: 0 0 0 10px;
   margin: 0 0 20px 0;
 }
-ol:after {
+.timeline ol:after {
   content: "";
   position: absolute;
   top: -10px;
@@ -5586,7 +5591,7 @@ ol:after {
   border-left: 4px solid #b1b4b6;
   height: 102%;
 }
-ol > li {
+.timeline ol > li {
   margin: 4px 0 20px 10px;
   padding-left: 15px;
   position: relative;
@@ -5594,20 +5599,20 @@ ol > li {
   border-bottom: 1px solid #DEE0E2;
   font-family: "GDS Transport";
 }
-ol > li h2 {
+.timeline ol > li h2 {
   padding-top: 5px;
   margin-bottom: 10px;
   font-size: 1.2em;
 }
-ol > li:last-child {
+.timeline ol > li:last-child {
   margin-bottom: 0px;
   border-bottom: 0px;
 }
-ol > li .timeline-reference {
+.timeline ol > li .timeline-reference {
   display: table;
   position: relative;
 }
-ol > li .timeline-reference:before {
+.timeline ol > li .timeline-reference:before {
   content: "";
   position: absolute;
   left: -20px;
@@ -5615,7 +5620,7 @@ ol > li .timeline-reference:before {
   top: 9px;
   z-index: -1;
 }
-ol > li:before {
+.timeline ol > li:before {
   content: "";
   display: block;
   width: 20px;
@@ -5628,7 +5633,7 @@ ol > li:before {
   left: -37px;
   top: 2px;
 }
-ol > li ul li a {
+.timeline ol > li ul li a {
   text-decoration: underline;
 }
 
@@ -5716,7 +5721,8 @@ ol > li ul li a {
   background: #f3f2f1;
 }
 
-.gc-vertical-nav__link:active, .gc-vertical-nav__link:hover {
+.gc-vertical-nav__link:active,
+.gc-vertical-nav__link:hover {
   color: #1d70b8;
   border-left-color: #1d70b8;
   text-decoration: none;
@@ -5794,7 +5800,7 @@ ol > li ul li a {
 }
 .panel {
   background: #f3f2f1;
-  padding: 15px;
+  padding: 2em 1.8em;
   min-height: 120px;
 }
 
@@ -5803,4 +5809,152 @@ ol > li ul li a {
   border-radius: 3px;
   padding: 10px 15px;
   margin-bottom: 10px;
+}
+.panel-list > li > a {
+  text-decoration: none;
+}
+.panel-list > li:hover {
+  background-color: #f3f2f1;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.accordionpanel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion:after {
+  content: "➕";
+  /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "➖";
+  /* Unicode character for "minus" sign (-) */
+}
+
+.filter-panel {
+  background: #f3f2f1;
+  padding: 15px;
+  border-radius: 0.1em;
+}
+
+.data-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 20.75em;
+  min-height: 15.75em;
+  overflow: hidden;
+  text-decoration: none;
+  background: white;
+  padding: 2em 1.8em;
+  transition: transform 0.45s ease, background 0.45s ease;
+  border: 1px solid #1b1c1c;
+}
+.data-card h3 {
+  color: #2E3C40;
+  font-size: 1.85em;
+  font-weight: 600;
+  line-height: 1;
+  padding-bottom: 0.5em;
+  margin: 0 0 0.142857143em;
+  border-bottom: 2px solid #f47738;
+  transition: color 0.45s ease, border 0.45s ease;
+}
+.data-card h4 {
+  color: #505a5f;
+  font-size: 1.125em;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  margin: 0 0 1.777777778em;
+  transition: color 0.45s ease;
+}
+.data-card p {
+  color: #505a5f;
+  font-weight: 600;
+  line-height: 1.8;
+  margin: 0 0 1.25em;
+  transform: translateY(-0.5em);
+  transition: opacity 0.45s ease, transform 0.5s ease;
+}
+.data-card .link-text {
+  display: block;
+  color: #003a69;
+  font-size: 1.125em;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: auto 0 0;
+  transition: color 0.45s ease;
+}
+.data-card .link-text svg {
+  margin-left: 0.5em;
+  transition: transform 0.6s ease;
+  padding-top: 4px;
+  position: absolute;
+}
+.data-card .link-text svg path {
+  fill: #003a69;
+  transition: fill 0.45s ease;
+}
+.data-card:hover {
+  background: #003a69;
+  transform: scale(1.02);
+}
+.data-card:hover h3 {
+  color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+}
+.data-card:hover h4 {
+  color: #FFFFFF;
+}
+.data-card:hover p {
+  transform: translateY(-1em);
+  transition: opacity 0.45s ease, transform 0.5s ease;
+  color: #ffffff;
+  transform: none;
+}
+.data-card:hover .link-text {
+  color: #FFFFFF;
+}
+.data-card:hover .link-text svg {
+  animation: point 1.25s infinite alternate;
+}
+.data-card:hover .link-text svg path {
+  fill: #FFFFFF;
+}
+
+@keyframes point {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0.125em);
+  }
 }

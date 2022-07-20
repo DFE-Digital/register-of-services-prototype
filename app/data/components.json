@@ -7,7 +7,7 @@
         "docsLink": "https://dfe-digital.github.io/architecture/common-components/#dfe-sign-in",
         "needs": [
             {
-                "need": "Service teams who want to provide an authentication process to access DfE services."
+                "need": "Service teams who need to provide an authentication process to access DfE services."
             }
         ],
         "users": [
@@ -19,6 +19,59 @@
             },
             {
                 "group": "Teachers"
+            }
+        ],
+        "services":[
+            {
+                "name": "Apply to become an Academy",
+                "id": "1",
+                "phase": "Live"
+            }
+        ]
+    },
+    {
+        "id": "cip",
+        "name": "Cloud Infrastructure Platform (CIP)",
+        "description": "CIP is a set of principles, processes and technologies that support the development and delivery of cloud computing, applications and services.",
+        "docsLink": "https://dfe-digital.github.io/architecture/common-components/#cloud-infrastructure-platform",
+        "needs": [
+            {
+                "need": "Service teams who need to host their services securely."
+            }
+        ],
+        "users": [
+            {
+                "group": "DfE Service Teams"
+            }
+        ],
+        "services":[
+            {
+                "name": "Apply to become an Academy",
+                "id": "1",
+                "phase": "Live"
+            }
+        ]
+    },
+    {
+        "id": "paas",
+        "name": "GOV.UK PaaS",
+        "description": "GOV.UK Platform as a Service (PaaS) is a platform developed by Government Digital Service (GDS) and available for government departments to deploy applications and backend services.",
+        "docsLink": "https://dfe-digital.github.io/architecture/common-components/#govuk-paas",
+        "needs": [
+            {
+                "need": "Service teams who need to host their services securely."
+            }
+        ],
+        "users": [
+            {
+                "group": "DfE Service Teams"
+            }
+        ],
+        "services":[
+            {
+                "name": "Move to a 4 day school week",
+                "id": "3",
+                "phase": "Beta"
             }
         ]
     }
